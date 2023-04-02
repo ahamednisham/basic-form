@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script>
+      var formData = [];
+
+      function handleSubmit(event) {
+        event.preventDefault(); 
+        var form = event.target;
+        var data = new FormData(form);
+        var formDataObj = {};
+        for (var pair of data.entries()) {
+          formDataObj[pair[0]] = pair[1];
+        }
+        formData.push(formDataObj);
+        form.reset();
+      }
+
+      function downloadCSV() {
+        var csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += Object.keys(formData[0]).join(",") + "\n";
+        formData.forEach(function(obj) {
+          var row = "";
+          Object.keys(obj).forEach(function(key) {
+            if (row !== "") row += ",";
+            row += obj[key];
+          });
+          csvContent += row + "\n";
+        });
+
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "form-data.csv");
+        document.body.appendChild(link); 
+        link.click();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Form</h1>
+    <form onsubmit="handleSubmit(event)">
+        <div class="formElements">
+        <label>
+            First Name :
+            <input type="text" name="firstname" required>
+        </label>
+        <br>
+        <label>
+            Last Name :
+            <input type="text" name="lastname" required>
+        </label>
+        <br>
+        <label>
+            Phone Number :
+            <input type="tel" name="phone" required>
+        </label>
+        <br>
+        <label>
+            Email :
+            <input type="email" name="email" required>
+        </label>
+        <br>
+        <label>
+            Date of Birth :
+            <input type="date" name="dob" required>
+        </label>
+        <br>
+        <label>
+            City :
+            <input type="text" name="city" required>
+        </label>
+        <br>
+        <label>
+            Gender :
+            <select name="gender" id="gender" required>
+                <option value="">Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </label>
+        <br>
+    </div>
+        <button type="submit">Append Data</button>
+        <button type="button" onclick="downloadCSV()">Download CSV</button>
+    
+    </form>
+  </body>
+</html>
+</html>

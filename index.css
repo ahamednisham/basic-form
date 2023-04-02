@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    padding: 10px 0px;
+    margin-left: 10px;
+}
+
+.formElements{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: 10px;
+    margin: 10px;
+}
+
+button{
+    padding: 10px;
+    margin-left: 10px;
+}
+
+select{
+    padding: 10px;
+}
+
+input{
+    padding: 10px;
+}
