@@ -8,15 +8,27 @@
     <title>Basic Form</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <style>
-      @media (max-width: 400px) {
-    .formElements {
-        flex-direction: column;
-        flex-wrap: nowrap;
+
+      @media (min-width: 200px) and (max-width: 450px){
+      .formElements {
+          flex-direction: column;
+          flex-wrap: nowrap;
+          
+      }
+      input{
+          width: 94%;
+      }
     }
 
-    input{
-        width: 94%;
-    }
+      @media (max-width: px) {
+      .formElements {
+          flex-direction: column;
+          flex-wrap: nowrap;
+      }
+
+      input{
+          width: 94%;
+      }
   }
     </style>
     <script>
