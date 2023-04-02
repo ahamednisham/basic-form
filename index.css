@@ -1,6 +1,7 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-family: Trebuchet MS,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Tahoma,sans-serif; 
 }
 
 h1{
@@ -28,3 +29,14 @@ select{
 input{
     padding: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+    .formElements {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    input{
+        width: 94%;
+    }
+  }
