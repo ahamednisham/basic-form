@@ -29,14 +29,3 @@ select{
 input{
     padding: 10px;
 }
-
-@media (max-width: 600px) {
-    .formElements {
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }
-
-    input{
-        width: 94%;
-    }
-  }
